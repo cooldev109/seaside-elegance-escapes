@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -14,6 +13,13 @@ const Hero = () => {
     const apartmentsSection = document.getElementById('apartments');
     if (apartmentsSection) {
       apartmentsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const scrollToVirtualTour = () => {
+    const virtualTourSection = document.getElementById('virtual-tour');
+    if (virtualTourSection) {
+      virtualTourSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -70,6 +76,7 @@ const Hero = () => {
                 variant="outline" 
                 className="border-white text-white hover:bg-white hover:text-ocean-deep px-8 py-3 text-lg transition-colors"
                 style={{ background: 'linear-gradient(135deg, rgb(32, 64, 96) 0%, rgb(29, 143, 201) 100%)' }}
+                onClick={scrollToVirtualTour}
               >
                 Virtual Tour
               </Button>
