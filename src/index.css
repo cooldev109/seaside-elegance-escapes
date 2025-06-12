@@ -7,7 +7,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 250 100% 99%;
     --foreground: 210 15% 15%;
 
     --card: 0 0% 100%;
@@ -19,10 +19,10 @@
     --primary: 210 50% 25%;
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 200 15% 95%;
+    --secondary: 210 20% 97%;
     --secondary-foreground: 210 15% 15%;
 
-    --muted: 45 25% 92%;
+    --muted: 210 15% 96%;
     --muted-foreground: 210 10% 45%;
 
     --accent: 200 50% 85%;
@@ -31,8 +31,8 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 200 20% 85%;
-    --input: 200 20% 85%;
+    --border: 200 20% 90%;
+    --input: 200 20% 90%;
     --ring: 210 50% 25%;
 
     --radius: 0.5rem;
@@ -40,10 +40,10 @@
     /* Custom luxury colors */
     --ocean-deep: 210 50% 25%;
     --ocean-blue: 200 75% 45%;
-    --ocean-light: 190 60% 85%;
-    --sand-warm: 45 35% 88%;
-    --sand-light: 45 25% 95%;
-    --pearl: 0 0% 98%;
+    --ocean-light: 190 60% 92%;
+    --sand-warm: 45 35% 95%;
+    --sand-light: 45 25% 98%;
+    --pearl: 210 20% 99%;
     --charcoal: 210 15% 15%;
   }
 
@@ -84,8 +84,10 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-pearl text-foreground font-sans;
     font-feature-settings: "rlig" 1, "calt" 1;
+    background-image: linear-gradient(135deg, hsl(var(--pearl)) 0%, hsl(var(--sand-light)) 100%);
+    min-height: 100vh;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -100,6 +102,10 @@
   
   .sand-gradient {
     background: linear-gradient(135deg, hsl(var(--sand-warm)) 0%, hsl(var(--sand-light)) 100%);
+  }
+  
+  .elegant-gradient {
+    background: linear-gradient(135deg, hsl(var(--pearl)) 0%, hsl(var(--ocean-light)) 50%, hsl(var(--sand-light)) 100%);
   }
   
   .text-ocean-deep {

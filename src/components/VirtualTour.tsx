@@ -9,7 +9,7 @@ const VirtualTour = () => {
   const [isMuted, setIsMuted] = useState(false);
 
   return (
-    <section id="virtual-tour" className="py-20 bg-sand-light">
+    <section id="virtual-tour" className="py-20 elegant-gradient">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-ocean-deep mb-6">
@@ -22,7 +22,7 @@ const VirtualTour = () => {
         </div>
 
         <div className="max-w-6xl mx-auto">
-          <Card className="overflow-hidden shadow-2xl">
+          <Card className="overflow-hidden shadow-2xl bg-white/80 backdrop-blur-sm">
             <CardContent className="p-0">
               {/* Virtual Tour Player */}
               <div className="relative aspect-video bg-ocean-deep">
@@ -77,7 +77,7 @@ const VirtualTour = () => {
 
           {/* Tour Options */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-            <Card className="text-center p-6 hover:shadow-lg transition-shadow">
+            <Card className="text-center p-6 hover:shadow-lg transition-shadow bg-white/60 backdrop-blur-sm">
               <CardContent className="space-y-4">
                 <div className="w-16 h-16 ocean-gradient rounded-full flex items-center justify-center mx-auto">
                   <span className="text-white text-2xl">🏖️</span>
@@ -88,7 +88,7 @@ const VirtualTour = () => {
               </CardContent>
             </Card>
 
-            <Card className="text-center p-6 hover:shadow-lg transition-shadow">
+            <Card className="text-center p-6 hover:shadow-lg transition-shadow bg-white/60 backdrop-blur-sm">
               <CardContent className="space-y-4">
                 <div className="w-16 h-16 ocean-gradient rounded-full flex items-center justify-center mx-auto">
                   <span className="text-white text-2xl">🏊</span>
@@ -99,7 +99,7 @@ const VirtualTour = () => {
               </CardContent>
             </Card>
 
-            <Card className="text-center p-6 hover:shadow-lg transition-shadow">
+            <Card className="text-center p-6 hover:shadow-lg transition-shadow bg-white/60 backdrop-blur-sm">
               <CardContent className="space-y-4">
                 <div className="w-16 h-16 ocean-gradient rounded-full flex items-center justify-center mx-auto">
                   <span className="text-white text-2xl">🍽️</span>
