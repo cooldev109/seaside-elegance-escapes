@@ -10,6 +10,13 @@ const Hero = () => {
   const [checkOut, setCheckOut] = useState('');
   const [guests, setGuests] = useState('2');
 
+  const scrollToApartments = () => {
+    const apartmentsSection = document.getElementById('apartments');
+    if (apartmentsSection) {
+      apartmentsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
@@ -50,11 +57,20 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-              <Button size="lg" className="ocean-gradient text-white px-8 py-3 text-lg hover:opacity-90 transition-opacity">
+              <Button 
+                size="lg" 
+                className="ocean-gradient text-white px-8 py-3 text-lg hover:opacity-90 transition-opacity"
+                onClick={scrollToApartments}
+              >
                 Discover Apartments
                 <ChevronRight className="ml-2 w-5 h-5" />
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-ocean-deep px-8 py-3 text-lg transition-colors">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-white text-white hover:bg-white hover:text-ocean-deep px-8 py-3 text-lg transition-colors"
+                style={{ background: 'linear-gradient(135deg, rgb(32, 64, 96) 0%, rgb(29, 143, 201) 100%)' }}
+              >
                 Virtual Tour
               </Button>
             </div>
