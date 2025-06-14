@@ -115,17 +115,17 @@ const Gallery = () => {
   const selectedImageData = selectedImage ? filteredImages.find(img => img.id === selectedImage) : null;
 
   return (
-    <section id="gallery" className="py-20 bg-pearl">
+    <section id="gallery" className="py-20 bg-white/90 backdrop-blur-sm">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in">
-          <Badge variant="outline" className="mb-4 border-ocean-blue text-ocean-blue">
+          <Badge variant="outline" className="mb-4 border-blue-500 text-blue-600">
             Visual Experience
           </Badge>
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-ocean-deep mb-6">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">
             Luxury
-            <span className="block text-ocean-blue">Gallery</span>
+            <span className="block text-blue-200">Gallery</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
             Explore our stunning collection of luxury accommodations, breathtaking ocean views, 
             and world-class amenities through our curated gallery.
           </p>
@@ -139,8 +139,8 @@ const Gallery = () => {
               variant={activeCategory === category.id ? "default" : "outline"}
               className={
                 activeCategory === category.id 
-                  ? "ocean-gradient text-white" 
-                  : "border-ocean-blue text-ocean-blue hover:bg-ocean-blue hover:text-white"
+                  ? "bg-blue-600 text-white hover:bg-blue-700" 
+                  : "border-blue-400 text-blue-100 bg-white/10 backdrop-blur-sm hover:bg-blue-600 hover:text-white"
               }
               onClick={() => setActiveCategory(category.id)}
             >
@@ -154,7 +154,7 @@ const Gallery = () => {
           {filteredImages.map((image, index) => (
             <Card 
               key={image.id} 
-              className="group overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-500 cursor-pointer animate-fade-in bg-white"
+              className="group overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-500 cursor-pointer animate-fade-in bg-white/80 backdrop-blur-sm"
               style={{ animationDelay: `${index * 0.1}s` }}
               onClick={() => openLightbox(image.id)}
             >
@@ -164,9 +164,9 @@ const Gallery = () => {
                   alt={image.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 via-blue-600/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-blue-500/30 backdrop-blur-sm rounded-full flex items-center justify-center">
                     <ZoomIn className="w-6 h-6 text-white" />
                   </div>
                 </div>
@@ -229,7 +229,7 @@ const Gallery = () => {
         )}
 
         <div className="text-center mt-12">
-          <Button size="lg" variant="outline" className="border-ocean-blue text-ocean-blue hover:bg-ocean-blue hover:text-white px-8">
+          <Button size="lg" variant="outline" className="border-blue-400 text-blue-100 bg-white/10 backdrop-blur-sm hover:bg-blue-600 hover:text-white px-8">
             View Virtual Tour
           </Button>
         </div>
