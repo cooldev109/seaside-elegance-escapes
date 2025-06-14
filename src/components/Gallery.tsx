@@ -1,9 +1,10 @@
 
 import { useState } from 'react';
-import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { X, ZoomIn, ChevronLeft, ChevronRight } from 'lucide-react';
+import GalleryFilter from './GalleryFilter';
+import GalleryGrid from './GalleryGrid';
+import GalleryLightbox from './GalleryLightbox';
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
@@ -131,102 +132,23 @@ const Gallery = () => {
           </p>
         </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
-          {categories.map((category) => (
-            <Button
-              key={category.id}
-              variant={activeCategory === category.id ? "default" : "outline"}
-              className={
-                activeCategory === category.id 
-                  ? "bg-blue-600 text-white hover:bg-blue-700" 
-                  : "border-blue-400 text-blue-100 bg-white/10 backdrop-blur-sm hover:bg-blue-600 hover:text-white"
-              }
-              onClick={() => setActiveCategory(category.id)}
-            >
-              {category.name}
-            </Button>
-          ))}
-        </div>
+        <GalleryFilter 
+          categories={categories}
+          activeCategory={activeCategory}
+          onCategoryChange={setActiveCategory}
+        />
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredImages.map((image, index) => (
-            <Card 
-              key={image.id} 
-              className="group overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-500 cursor-pointer animate-fade-in bg-white/80 backdrop-blur-sm"
-              style={{ animationDelay: `${index * 0.1}s` }}
-              onClick={() => openLightbox(image.id)}
-            >
-              <div className="relative overflow-hidden aspect-[4/3]">
-                <img
-                  src={image.src}
-                  alt={image.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 via-blue-600/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="w-12 h-12 bg-blue-500/30 backdrop-blur-sm rounded-full flex items-center justify-center">
-                    <ZoomIn className="w-6 h-6 text-white" />
-                  </div>
-                </div>
-                <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <h3 className="font-semibold mb-1">{image.title}</h3>
-                  <p className="text-sm opacity-80 italic">{image.titleIt}</p>
-                </div>
-              </div>
-            </Card>
-          ))}
-        </div>
+        <GalleryGrid 
+          images={filteredImages}
+          onImageClick={openLightbox}
+        />
 
-        {/* Lightbox */}
-        {selectedImage && selectedImageData && (
-          <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4">
-            <div className="relative max-w-4xl max-h-full w-full">
-              {/* Close Button */}
-              <Button
-                variant="ghost"
-                size="sm"
-                className="absolute top-4 right-4 z-10 bg-white/10 hover:bg-white/20 text-white"
-                onClick={closeLightbox}
-              >
-                <X className="w-5 h-5" />
-              </Button>
-
-              {/* Navigation Buttons */}
-              <Button
-                variant="ghost"
-                size="sm"
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 text-white"
-                onClick={() => navigateImage('prev')}
-              >
-                <ChevronLeft className="w-6 h-6" />
-              </Button>
-
-              <Button
-                variant="ghost"
-                size="sm"
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 text-white"
-                onClick={() => navigateImage('next')}
-              >
-                <ChevronRight className="w-6 h-6" />
-              </Button>
-
-              {/* Image */}
-              <img
-                src={selectedImageData.src}
-                alt={selectedImageData.title}
-                className="w-full h-full object-contain rounded-lg"
-              />
-
-              {/* Image Info */}
-              <div className="absolute bottom-4 left-4 right-4 text-center text-white">
-                <h3 className="text-xl font-semibold mb-1">{selectedImageData.title}</h3>
-                <p className="text-sm opacity-80 italic">{selectedImageData.titleIt}</p>
-              </div>
-            </div>
-          </div>
-        )}
+        <GalleryLightbox
+          isOpen={selectedImage !== null}
+          currentImage={selectedImageData}
+          onClose={closeLightbox}
+          onNavigate={navigateImage}
+        />
 
         <div className="text-center mt-12">
           <Button size="lg" variant="outline" className="border-blue-400 text-blue-100 bg-white/10 backdrop-blur-sm hover:bg-blue-600 hover:text-white px-8">
